@@ -71,3 +71,5 @@ heatmap.addEventListener('click', function() {
 
 //geolocalizacion
 L.control.locate().addTo(map);
+
+//geocodificador
