@@ -70,5 +70,4 @@ heatmap.addEventListener('click', function() {
 });
 
 //geolocalizacion
-L.control.locate({setView:'false',flyto:'false',drawCircle:'false',showCompass:'true',drawMarker:'false',keepCurrentZoomLevel:'true',locateOptions: {
-    enableHighAccuracy: true}}).addTo(map);
+L.control.locate().addTo(map);
