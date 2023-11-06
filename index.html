@@ -8,15 +8,17 @@
     <link rel="stylesheet" type="text/css" href="css/gen.css">
     <link rel="stylesheet" type="text/css" href="css/div.css">
     <link rel="stylesheet" type="text/css" href="css/text.css">
+    <link rel="stylesheet" type="text/css" href="css/but.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    <link rel="stylesheet" href="libs/posicion/dist/L.Control.Locate.min.css" />
 
-     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
-    
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script src="libs/posicion/src/L.Control.Locate.js"></script>
     <script type="text/javascript" src="layers/pts_supermercados.js"></script>
 
 </head>
@@ -26,8 +28,23 @@
             <h1 class="titulo_cabecera">Densidad de supermercados en la comuna 6 en Cali, Colombia</h1>
         </div>
         <div class="contenedor_mapa" id="map">
+            <button class="boton" id="ocultar_mostrar">
+                <img src="data/ojo.png" id="logo">
+            </button>
+            <button class="boton" id="iconos">
+                <img src="data/market.png" id="logo">
+            </button>
+            <button class="boton" id="cambiar_base">
+                <img src="data/mapa.png" id="logo">
+            </button>
+            <button class="boton" id="heatmap">
+                <img src="data/heat.png" id="logo">
+            </button>
             <script type="text/javascript" src="js/map.js"></script>
             <script type="text/javascript" src="js/layers.js"></script>
+
+            <script type="text/javascript" src="js/funciones.js"></script>
+            
         </div>
     </div>
     

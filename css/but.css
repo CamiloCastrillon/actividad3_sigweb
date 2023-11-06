@@ -1,0 +1,27 @@
+.boton{
+    position: absolute;
+    z-index: 1000;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+#ocultar_mostrar{
+    top: 115px;
+    left: 11px;
+}
+#iconos{
+    top: 150px;
+    left: 11px;  
+}
+#cambiar_base{
+    top: 185px;
+    left: 11px; 
+}
+#heatmap{
+    top: 220px;
+    left: 11px; 
+}
+#logo{
+    max-width: 110%;
+    height: auto;
+}

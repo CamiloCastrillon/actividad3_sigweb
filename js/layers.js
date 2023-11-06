@@ -9,6 +9,26 @@ var style_supermercados = {
 
 var layer_supermercados = L.geoJson(supermercados, {
     pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, style_supermercados);
+        return L.circleMarker(latlng, style_supermercados)
     }
-}).addTo(map);
+});
+
+var icono = L.icon({
+    iconUrl: 'data/market.png', // Ruta a tu imagen PNG
+    iconSize: [20, 20], // Tamaño del icono
+});
+
+var layer_supermercados_icono = L.geoJson(supermercados, {
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: icono })
+    }
+});
+
+// Convierte la capa GeoJSON en una capa de calor
+var heatLayer = L.heatLayer(layer_supermercados.toGeoJSON().features.map(function(feature) {
+    return feature.geometry.coordinates.reverse(); // Invertimos las coordenadas
+}), {
+    radius: 45, // Tamaño del radio del calor
+    blur: 15, // Intensidad del efecto de difuminado
+    maxZoom: 17 // Nivel de zoom máximo en el que se mostrará el calor
+});
