@@ -7,28 +7,48 @@ var style_supermercados = {
     fillOpacity: 0.6 // Opacidad del relleno del punto
 };
 
-var layer_supermercados = L.geoJson(supermercados, {
-    pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, style_supermercados)
-    }
+//carga la capa como geojson desde la gdb
+var supermercados = L.geoJSON();
+
+$.post("conect/capas.php",
+	{
+		peticion: 'cargar_supermercados',
+	},function (data, status, feature)
+	{
+	if(status=='success')
+	{
+		supermercados2 = eval('('+data+')');
+		var supermercados = L.geoJSON(supermercados2, {
+			style: style_supermercados,
+			onEachFeature: oneachfeature,
+		}).addTo(map);
+        
+        supermercados.eachLayer(function (layer) {
+          layer.setZIndexOffset(1000);
+        });
+	}
 });
 
-var icono = L.icon({
-    iconUrl: 'data/market.png', // Ruta a tu imagen PNG
-    iconSize: [20, 20], // Tamaño del icono
-});
+var comunas = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+{
+layers: 'idesc:mc_comunas',
+format: 'image/png',
+transparent: true,
+zIndex: 15000,
+}).addTo(map);
 
-var layer_supermercados_icono = L.geoJson(supermercados, {
-    pointToLayer: function (feature, latlng) {
-        return L.marker(latlng, { icon: icono })
-    }
-});
+var barrios = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+{
+layers: 'idesc:mc_barrios',
+format: 'image/png',
+transparent: true,
+zIndex: 12000,
+}).addTo(map);
 
-// Convierte la capa GeoJSON en una capa de calor
-var heatLayer = L.heatLayer(layer_supermercados.toGeoJSON().features.map(function(feature) {
-    return feature.geometry.coordinates.reverse(); // Invertimos las coordenadas
-}), {
-    radius: 45, // Tamaño del radio del calor
-    blur: 15, // Intensidad del efecto de difuminado
-    maxZoom: 17 // Nivel de zoom máximo en el que se mostrará el calor
-});
+var via = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+{
+layers: 'idesc:mc_separadores_urbanos',
+format: 'image/png',
+transparent: true,
+zIndex: 10000,
+}).addTo(map);

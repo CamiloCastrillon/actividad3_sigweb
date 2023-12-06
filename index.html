@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,23 +33,21 @@
             <h1 class="titulo_cabecera">Densidad de supermercados en la comuna 6 en Cali, Colombia</h1>
         </div>
         <div class="contenedor_mapa" id="map">
-            <button class="boton" id="ocultar_mostrar">
-                <img src="data/ojo.png" id="logo">
-            </button>
-            <button class="boton" id="iconos">
-                <img src="data/market.png" id="logo">
-            </button>
             <button class="boton" id="cambiar_base">
                 <img src="data/mapa.png" id="logo">
-            </button>
-            <button class="boton" id="heatmap">
-                <img src="data/heat.png" id="logo">
             </button>
             <script type="text/javascript" src="js/map.js"></script>
             <script type="text/javascript" src="js/layers.js"></script>
 
             <script type="text/javascript" src="js/funciones.js"></script>
+        </div>
+        <div class = "cont_filtro">
+            <p class = "t_des">Filtro</p>
+            <label class = "label_select" id = "l_id" for="id">Por id</label>
+            <label class = "label_select" id = "l_tipo" for="tipo">Por tipo</label>
             
+            <select class = "op" name="opciones_id" id="id"></select>
+            <select class = "op" name="opciones_id" id="tipo"></select>
         </div>
     </div>
     
