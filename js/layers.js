@@ -10,9 +10,10 @@ var style_supermercados = {
 //carga la capa como geojson desde la gdb
 var supermercados = L.geoJSON();
 
-$.post("conect/capas.php",
+$.post("php/capas.php",
 	{
 		peticion: 'cargar_supermercados',
+
 	},function (data, status, feature)
 	{
 	if(status=='success')
@@ -24,7 +25,7 @@ $.post("conect/capas.php",
 		}).addTo(map);
         
         supermercados.eachLayer(function (layer) {
-          layer.setZIndexOffset(1000);
+        	layer.setZIndexOffset(1000);
         });
 	}
 });
