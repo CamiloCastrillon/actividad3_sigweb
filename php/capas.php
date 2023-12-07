@@ -1,6 +1,4 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-
 	//configuracion de la conexion a la gdb
 	
 	include('db_con.php');

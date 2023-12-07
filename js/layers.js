@@ -20,13 +20,10 @@ $.post("php/capas.php",
 	{
 		supermercados2 = eval('('+data+')');
 		var supermercados = L.geoJSON(supermercados2, {
-			style: style_supermercados,
-			onEachFeature: oneachfeature,
+			pointToLayer: function (feature, latlng){
+				return L.circleMarker (latlng, style_supermercados)
+			},
 		}).addTo(map);
-        
-        supermercados.eachLayer(function (layer) {
-        	layer.setZIndexOffset(1000);
-        });
 	}
 });
 
